@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 
 export default class CartResult extends Component {
+  showTotalAmount = (cart) => {
+    var result = 0;
+    for(var i = 0; i < cart.length; i++) {
+      result += cart[i].product.price * cart[i].quantity;
+    }
+    return result;
+  }
   render() {
+    var {cart} = this.props;
+    console.log(cart);
     return (
         <tr>
         <td colSpan={3} />
@@ -12,7 +21,7 @@ export default class CartResult extends Component {
         </td>
         <td>
           <h4>
-            <strong>15$</strong>
+            <strong>{this.showTotalAmount(cart)}$</strong>
           </h4>
         </td>
         <td colSpan={3}>
